@@ -41,6 +41,9 @@ void SpookyHash32_test     ( const void * key, int len, uint32_t seed, void * ou
 void SpookyHash64_test     ( const void * key, int len, uint32_t seed, void * out );
 void SpookyHash128_test    ( const void * key, int len, uint32_t seed, void * out );
 
+void xxHash32_test         ( const void * key, int len, uint32_t seed, void * out );
+void xxHash64_test         ( const void * key, int len, uint32_t seed, void * out );
+
 uint32_t MurmurOAAT ( const void * key, int len, uint32_t seed );
 
 //----------

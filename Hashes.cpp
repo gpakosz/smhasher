@@ -105,11 +105,11 @@ void FNV ( const void * key, int len, uint32_t seed, void * out )
 
 //-----------------------------------------------------------------------------
 
-uint32_t x17 ( const void * key, int len, uint32_t h ) 
+uint32_t x17 ( const void * key, int len, uint32_t h )
 {
   const uint8_t * data = (const uint8_t*)key;
-    
-  for(int i = 0; i < len; ++i) 
+
+  for(int i = 0; i < len; ++i)
   {
         h = 17 * h + (data[i] - ' ');
     }
@@ -119,11 +119,11 @@ uint32_t x17 ( const void * key, int len, uint32_t h )
 
 //-----------------------------------------------------------------------------
 
-void Bernstein ( const void * key, int len, uint32_t seed, void * out ) 
+void Bernstein ( const void * key, int len, uint32_t seed, void * out )
 {
   const uint8_t * data = (const uint8_t*)key;
-    
-  for(int i = 0; i < len; ++i) 
+
+  for(int i = 0; i < len; ++i)
   {
         seed = 33 * seed + data[i];
     }
@@ -152,4 +152,19 @@ uint32_t Crap8( const uint8_t *key, uint32_t len, uint32_t seed ) {
 void Crap8_test ( const void * key, int len, uint32_t seed, void * out )
 {
   *(uint32_t*)out = Crap8((const uint8_t*)key,len,seed);
+}
+
+//-----------------------------------------------------------------------------
+// xxHash
+
+#include "xxhash.h"
+
+void xxHash32_test ( const void * key, int len, uint32_t seed, void * out )
+{
+  *(uint32_t*)out = XXH32(key, len, seed);
+}
+
+void xxHash64_test ( const void * key, int len, uint32_t seed, void * out )
+{
+  *(uint64_t*)out = XXH64(key, (unsigned long long)len, seed);
 }
